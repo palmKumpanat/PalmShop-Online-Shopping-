@@ -1,0 +1,72 @@
+<%- include("partials/header.ejs") %>
+
+<br><br>
+<div class="container">
+  <div class="view-background">
+<h1>Register</h1><br>
+<form action="/register" method="POST" enctype="multipart/form-data">
+
+
+  <div class="mb-3">
+    <label class="form-label">Buyer or Seller</label>
+    <input type="text" class="form-control" name="status" placeholder="if you want to sell product, please type Seller but you want to buy only, type Buyer">
+  </div>
+
+
+<div class="mb-3">
+    <label class="form-label">Username</label>
+    <input type="text" class="form-control" name="username" placeholder="Your Username">
+  </div>
+
+<div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Your password">
+  </div>
+
+  <!-- <div class="mb-3">
+    <label class="form-label">AdminCode</label>
+    <input type="text" class="form-control" name="adminCode" placeholder="Your adminCode">
+  </div> -->
+
+  <div class="mb-3">
+    <label class="form-label">firstname</label>
+    <input type="text" class="form-control" name="firstName" placeholder="Your firstname">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">lastname</label>
+    <input type="text" class="form-control" name="lastName" placeholder="Your lastname">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">E-mail</label>
+    <input type="email" class="form-control" name="email" placeholder="Your E-mail address">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Address</label>
+    <input type="text" class="form-control" name="address" placeholder="Your address">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Postal Code</label>
+    <input type="text" class="form-control" name="postalCode" placeholder="Your postal Code">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">City</label>
+    <input type="text" class="form-control" name="city" placeholder="Your city">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Profile image</label>
+    <input type="file" class="form-control" name="profileImage" accept="image/*">
+  </div>
+
+<button type="submit" class="btn btn-info">Register</button>
+<a href="/">Back</a>
+</form>
+</div>
+</div>
+
+<%- include("partials/footer.ejs") %>

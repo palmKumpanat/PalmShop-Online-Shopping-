@@ -1,0 +1,62 @@
+<%- include("../partials/header.ejs") %>
+
+    <div class="container">
+        <div class="view-content">
+            <h1>DELIVERY ADDRESS</h1><hr>
+            <div class="mb-3">
+                <h4 class="background-color-white">Full Name : <%= order.user.firstName %> <%= order.user.lastName %> </h4><hr><br>
+              </div>
+            <div class="mb-3">
+                <h4>Shipping Address :</h4><br>
+                <h5 class="background-color-white">Address : <%= order.shippingAddress %> </h5><hr><br>
+              </div>
+            <div class="mb-3">
+                <h4 >Credit Card : </h4>
+                <h6 class="background-color-white">Card Number : <%= order.payment.cardNumber %> </h6>
+                <h6 class="background-color-white">Expiry Date : <%= order.payment.expiryDate %> </h6>
+                <h6 class="background-color-white">CVV : <%= order.payment.CVV %> </h6>
+                <h6 class="background-color-white">Name on Card : <%= order.payment.nameOnCard %> </h6>
+              </div><hr>
+        </div><br>
+    
+        <div class="view-content">
+            <h1>Order Item</h1><hr>
+            <% order.cart.forEach(function(cart){ %> 
+                <% cart.items.forEach(function(product){ %>
+                <div class="cart-content">
+                    <div class="cart-box">
+                        <img src="<%= product.image %>" class="cart-img">
+                        <div class="detail-box">
+                            <div class="cart-product-title"><%= product.name %></div>
+                            <div class="cart-price"> <%= product.unitPrice %> .-</div>
+                            <button class="button-Qty">
+                                <span class="badge"><%= product.quantity %></span>
+                             </button>
+                        </div>
+                        <div><%= product.totalPrice %> .-</div>
+                    </div>
+                    <hr>
+                </div>
+                <% }) %>
+                <p>You Have <%= cart.totalQty %> items in Order</p>
+            <% }) %> 
+            </div><br>
+    
+            <div class="view-content">
+                <h1>Order Summary</h1><hr>
+                <h5>Date : <%= order.date %></h5><br>
+                <% order.cart.forEach(function(cart){ %>
+                    <h5>Subtotal (<%= cart.totalQty %> Item) : <%= order.totalPrice %> .-</h5><br>
+                    <h5>Shipping Total: <%= order.shippingTotal %> .-</h5><br>
+                    <h5>Total Payment: <%= order.totalPayment %> .-</h5><br>
+                    <h5>Status : <p id="text-status-view"><%= order.status %></p> </h5>                    
+                <% }) %>
+                <p></p>
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+
+<%- include("../partials/footer.ejs") %>

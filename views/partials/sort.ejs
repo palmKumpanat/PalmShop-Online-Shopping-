@@ -1,0 +1,34 @@
+
+<div class="block-select">
+  <div class="container">
+  <select id="selete" name="forma" onchange="location = this.value;">
+      <option value="#">Categories</option>
+      <option value="/">All</option>
+      <option value="/find-Shoes">Shoes</option>
+      <option value="/find-Clothing"> Clothing</option>
+      <option value="/find-sunglasses"> sunglasses</option>
+      <option value="/find-Hat&Cap"> Hat&Cap</option>
+      <option value="/find-Bags"> Bags</option>
+     </select>
+
+  <select id="selete" name="forma" onchange="location = this.value;">
+    <option value="#">Sort By</option>
+    <option value="/">Popularity</option>
+    <option value="/sort-low-to-high">Price : Low to High</option>
+    <option value="/sort-high-to-low">  Price : High to Low</option>
+   </select><br><br>
+
+  <div class="searchbar">
+    <form class="d-flex" action="/search" method="POST">
+      <input class="form-control me-2" type="search" name="keyword" placeholder="Search for item" aria-label="Search">
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </div>
+
+  </div>
+</div>
+
+
+
+
+

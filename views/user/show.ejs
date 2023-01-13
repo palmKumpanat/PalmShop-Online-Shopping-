@@ -1,0 +1,120 @@
+<%- include("../partials/header.ejs") %>
+
+  <div class="container">
+    <div class="main">
+      <div class="topbar"></div>
+      <div class="row">
+        <div class="col-md-4 mt-1">
+          <div class="card text-center sidebar">
+            <div class="card-body">
+              <img src="<%= user.profileImage %>" class="rounded-circle" id="image-user" width="150">
+              <div class="mt-3">
+                <h3 id="username"><%= user.username %></h3>
+                <a href="/">Home</a>
+                <a href="/<%= user._id %>/edit-user">Edit</a>
+                <a href="/logout">Log out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 mt-1">
+          <div class="card mb-3 content">
+            <h1 class="m-3 pt-3">About</h1>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <h5>Full Name</h5>
+                </div>
+                <div class="col-md-9 text-secondart">
+                  <%= user.firstName + ' ' + user.lastName %>
+                </div>
+              </div><hr>
+              <div class="row">
+                <div class="col-md-3">
+                  <h5>Email</h5>
+                </div>
+                <div class="col-md-9 text-secondart">
+                  <a href="mailto: <%= user.email %>"><%= user.email %></a>
+                </div>
+              </div><hr>
+              <div class="row">
+                <div class="col-md-3">
+                  <h5>Address</h5>
+                </div>
+                <div class="col-md-9 text-secondart">
+                  <%= user.address %>, <%= user.postalCode %>, <%= user.city %>
+                </div>
+              </div><hr>
+            </div>
+          </div>
+        </div>
+      </div><br>
+
+      <div class="view-content-user">
+          <% if(!orders){ %>
+            <h2>Orders history</h2><hr>
+              <hr><h1 class="no-item">No Order in this time </h1><hr>
+          <% }else if(currentUser && currentUser.isAdmin){ %>
+            
+          <% }else if(currentUser && currentUser.status === 'Seller'){ %>
+            <div class="container">
+              <h2>Your Products</h2><hr>
+              <table>
+                <tr>
+                  <th class="text-detail-order">Product_ID</th>
+                  <th class="text-detail-order" id="hide-when-screen-small">NAME</th>
+                  <th class="text-detail-order">PRICE</th>
+                  <th class="text-detail-order">CATEGORIES</th>
+                  <th class="text-detail-order" id="order-view">ACTION</th>
+                </tr>
+                <% products.forEach(function(product){ %>
+                  <div class="container">
+                      <tr>
+                        <td class="text-detail-order"><a href="/<%= product._id %>" class="id-order"><%= product._id %></a></td>
+                        <td class="text-detail-order" id="hide-when-screen-small"><%= product.name %></td>
+                        <td class="text-detail-order"><%= product.price %> .-</td>
+                        <td class="text-detail-order" id="text-status"><%= product.categories %></td>
+                        <td class="text-detail-order" id="order-view"><a href="/view/<%= product._id %>" class="btn btn-sm btn-outline-secondary" id="btn">View More</a></td>
+                      </tr>
+                    </div>
+              <% }) %>
+          <% }else { %>
+            <h2>Orders history</h2><hr>
+              <div class="container">
+                <table>
+                  <tr>
+                    <th class="text-detail-order">ORDER_ID</th>
+                    <th class="text-detail-order">DATE</th>
+                    <th class="text-detail-order">TOTAL</th>
+                    <th class="text-detail-order">STATUS</th>
+                    <th class="text-detail-order" id="order-view">ACTION</th>
+                  </tr>
+                  <% orders.forEach(function(order){ %>  
+                    <div class="container">
+                    <tr>
+                      <td class="text-detail-order"><a href="/order/<%= order.id %>/view-more" class="id-order"><%= order.id %></a></td>
+                      <td class="text-detail-order"><%= order.date %></td>
+                      <td class="text-detail-order"><%= order.totalPrice %> .-</td>
+                      <td class="text-detail-order" id="text-status"><%= order.status %></td>
+                      <td class="text-detail-order" id="order-view"><a href="/order/<%= order.id %>/view-more" class="btn btn-sm btn-outline-secondary">View More</a></td>
+                    </tr>
+                  </div>
+                  <% }) %> 
+                </table><hr>
+                <h9 id="show-screen-small">( Click on Order ID for more details. )</h9>
+              </div>
+          <% } %>
+      </div>
+  </div> 
+</div><br>
+
+
+
+<!-- <h3>Your Orders :</h3>
+<ul>
+  <% orders.forEach(function(order){ %>
+    <li><a href=""><%= order.id %>,<%= order.date %>, <%= order.totalPrice %> , <%= order.status %></a></li>
+  <% }) %>
+</ul>
+</div> -->
+
